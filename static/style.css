@@ -1,0 +1,172 @@
+:root {
+    --primary--color: #1C6DD0;
+    --hover--color: #1c6dd0b3;
+    --black-color: #000;
+}
+
+#fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border: solid #fff;
+    border-right-color: var(--primary--color);
+  }
+  
+  .hide {
+    display: none !important;
+  }
+
+
+/* Página */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.row {
+    margin: 0;
+}
+
+.container {
+    padding: 4rem;
+}
+
+.principal-text {
+    padding-bottom: 4rem;
+}
+
+#p-home {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+/* Barra de Navegação */
+
+header, .navbar {
+    background-color: var(--primary--color);
+}
+
+#logo {
+    width: 4rem;
+    border-radius: 50%;
+}
+
+ .navbar-brand, .navbar-toggler {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar-brand:hover, .navbar-toggler:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.8);
+}
+
+.offcanvas {
+    background-color: var(--primary--color);
+}
+
+.offcanvas h5 {
+    color: #fff;
+}
+
+
+/* Formulário */
+
+label {
+    padding-top: 1rem;
+    font-weight: 700;
+}
+
+#resultado {
+    width: 20rem; 
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1.5rem 1.5rem 1rem;
+    padding: 0rem 1rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+}
+
+.fa-asterisk {
+    font-size: 0.8rem;
+    color: hsl(220, 100%, 70%);
+}
+
+.btn {
+    color: #fff;
+    background-color: var(--primary--color);
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: var(--hover--color);
+}
+
+.btn-danger {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    background-color: #dc3546dc;
+    border: 1px solid #dc3545;
+    border-radius: 0.5rem;
+}
+
+.btn-danger:hover {
+    background-color: #dc3545;
+}
+
+
+.form-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.form-link:hover {
+    color: var(--hover--color);
+}
+
+#form-success-message {
+    margin-bottom: 6rem;
+}
+
+/* Footer */
+
+footer {
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary--color);
+    padding-block: 2.5rem;
+}
+
+#footer-text {
+    color: #fff;
+}
+
+
