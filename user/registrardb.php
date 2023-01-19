@@ -75,7 +75,7 @@ if(isset($_POST['nome'])){
             // }
            
         } else {
-            formularioEnviado();
+            formularioNaoEnviado();
             exit;
         }
 
@@ -84,17 +84,28 @@ if(isset($_POST['nome'])){
     //Imagem sim, mensagem não
     if($naoExisteImagem==false && $naoExisteMensagem) {
         $sucesso = salvarImagem();
+
         if($sucesso) {
-            //Script que salva os campos, inclusive caminho das imagens
             if($numeroDeFotos==1) {
-                
-               $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) 
-            VALUES ('$nome', '$data_e_hora','null','null','$local', '$intensidade', '$classificacao', '$mensagem')";
-        
-            $insert = mysqli_query($conn, $sql);
+                $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','$novosNomes[0]','$paths[0]', 'null' , 'null',  '$local', '$intensidade', '$classificacao', 'null')";
+                //===== FEITO FEITO FEITO FEITO FEITO
+                $insert = mysqli_query($conn, $sql);
+                formularioEnviado();
             }
-            formularioEnviado();
-            
+
+            if($numeroDeFotos==2) {
+                $nomeFotoUm = $novosNomes[0];
+                $pathFotoUm = $paths[0];
+
+               $nomeFotoDois = $novosNomes[1];
+               $pathFotoDois = $paths[1];
+
+               $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','$nomeFotoUm','$pathFotoUm', '$nomeFotoDois' , '$pathFotoDois',  '$local', '$intensidade', '$classificacao', 'null')";
+               
+               $insert = mysqli_query($conn, $sql);
+               formularioEnviado();
+
+            }
            
         } else {
             formularioNaoEnviado();
@@ -105,17 +116,18 @@ if(isset($_POST['nome'])){
     
     //Imagem não, mensagem sim
     if($naoExisteImagem && $naoExisteMensagem==false) {
-        //Script que salva os campos junto com a mensagem MAS SEM IMAGENS
-        // $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img, path, endereco, intensidade, classificacao, mensagem) 
-        // VALUES ('$nome', '$data_e_hora','null','null',
-        // '$endereco','$mensagem')";
-    
-        // $insert = mysqli_query($conn, $sql);
+        $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','null','null', 'null' , 'null',  '$local', '$intensidade', '$classificacao', '$mensagem')";
+               
+        $insert = mysqli_query($conn, $sql);
+        formularioEnviado();
     }
 
     //Imagem não, mensagem não
     if($naoExisteImagem && $naoExisteMensagem) {
-        //Script que salva os campos sem mensagem e sem imagem
+        $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','null','null', 'null' , 'null',  '$local', '$intensidade', '$classificacao', 'null')";
+               
+        $insert = mysqli_query($conn, $sql);
+        formularioEnviado();
     }
 
 } 
