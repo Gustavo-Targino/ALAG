@@ -53,9 +53,12 @@
 
             <br>
 
-            <div>
+            
             <label class="form-label">Escolha até 2 imagens(Opcional):</label>
-            <input class="form-control" type="file" name="fotos[]" accept="image/*" multiple>
+            <input class="form-control" id="imageInput" type="file" name="fotos[]" accept="image/*" multiple>
+            
+            <div id="imageDiv">
+
             </div>
 
             <br>

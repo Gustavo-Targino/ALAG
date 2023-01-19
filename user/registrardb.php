@@ -69,10 +69,10 @@ if(isset($_POST['nome'])){
 
             }
             
-            if($numeroDeFotos>2) {
-                echo("<p class='alert alert-danger mt-3' role='alert'> Envie apenas 2 imagens.<a href='?pg=registrar' class='btn-danger'>Tentar novamente</a> </p> "); 
-                exit;
-            }
+            // if($numeroDeFotos>2) {
+            //     echo("<p class='alert alert-danger mt-3' role='alert'> Envie apenas 2 imagens.<a href='?pg=registrar' class='btn-danger'>Tentar novamente</a> </p> "); 
+            //     exit;
+            // }
            
         } else {
             formularioEnviado();

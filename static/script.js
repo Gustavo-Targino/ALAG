@@ -11,7 +11,11 @@ const localidade = document.querySelector('#localiadde')
 const uf = document.querySelector('#uf')
 const complemento = document.querySelector('#complemento')
 
+const imageInput = document.querySelector('#imageInput')
+const imageDiv = document.querySelector('#imageDiv')
+
 let crtlV = false
+
 const messageResult = document.querySelector("#resultado")
 const divErro = document.querySelector('#error')
 
@@ -66,11 +70,6 @@ cepInput.addEventListener('keyup', (e)=> {
     let caractere = inputValue.search(/\W|_|-/)
     let letra = inputValue.search(/[A-z]/)
     let numero = inputValue.search(/[0-9]/)
-    let campoVazio = inputValue==''
-    console.log(campoVazio)
-    // console.log(caractere)
-    // console.log(letra)
-    // console.log(numero)
     
    if(numero!==-1 && letra!==-1 || caractere!==-1) {
     cepInputErrorMessage()
@@ -123,6 +122,17 @@ const buscaCep = async (cep) => {
     messageResult.innerHTML += `<label>Ponto de Referência <i class="fa-solid fa-asterisk"></i> :</label><input type="text" class="form-control" name="complemento" id='complemento' required data-input value="${data.complemento}">`
 
 }
+
+imageInput.addEventListener( "change", () => {
+        
+    const files = imageInput.files
+        if (files.length>2) {
+            imageInput.value = ''
+            imageDiv.innerHTML = "<p class='alert alert-danger mt-3' role='alert'> Envie apenas 2 imagens.</p> "
+        } else {
+            imageDiv.innerHTML =''
+        }
+      });
 
 form.addEventListener('submit', (e)=> {
     
