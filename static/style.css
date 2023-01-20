@@ -154,6 +154,13 @@ label {
     margin-bottom: 6rem;
 }
 
+/*Carrosel*/
+
+.carousel-item img {
+    border: 1px solid var(--primary--color);
+    border-radius: 1rem;
+}
+
 /* Footer */
 
 footer {
@@ -168,5 +175,3 @@ footer {
 #footer-text {
     color: #fff;
 }
-
-
