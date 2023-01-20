@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark">
   <div class="container-fluid">
   <a class="navbar-brand" href="?pg=home">
-          <img src="./assets/Logo_User.png" alt="Logo" id="logo" class="d-inline-block align-text-center">
+          <img src="./assets/logo.png" alt="Logo" id="logo" class="d-inline-block align-text-center">
           <strong>- ALAG <i class="fa-solid fa-triangle-exclamation"></i></strong> 
         </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -21,7 +21,7 @@
           </li>
         <hr class="item-hr">
           <li class="nav-item">
-            <a class="nav-link" href="?pg=registrar">Denunciar Alagamento</a>
+            <a class="nav-link" href="?pg=denuncia">Denunciar Alagamento</a>
           </li>
         <hr class="item-hr">
           <li class="nav-item">

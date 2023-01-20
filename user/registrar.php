@@ -1,78 +1,84 @@
-<div class="px-md-0">
+<?php
 
-<div  id="fade" class="hide">
-          <div id="loader" class="spinner-border hide"  role="status" >
+  include('./inc/config.inc.php');
 
-          </div>      
-    </div>
+if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
 
+  if(strlen($_POST['nome']) == 0 ) {
+    echo "<p class='alert alert-danger mt-3' role='alert'> Preencha seu nome.</p> "; 
+  } else if(strlen($_POST['cpf']) == 0 ) {
+    echo "<p class='alert alert-danger mt-3' role='alert'> Preencha seu CPF.</p> "; 
+  } else if(strlen($_POST['senha'])==0) {
+    echo "<p class='alert alert-danger mt-3' role='alert'> Preencha com uma senha.</p> "; 
+  } else {
+      $nome = $_POST['nome'];
+      $cpf = $_POST['cpf'];
+      $senha = $_POST['senha'];
+
+    $verificaCPF = "SELECT * FROM usuarios WHERE cpf = '$cpf' ";
+    $retornoVerificacao = mysqli_query($conn, $verificaCPF);
     
+  
+    if(mysqli_num_rows($retornoVerificacao)!==0) {
+    
+        echo "<p class='alert alert-danger mt-3' role='alert'> Falha ao registrar. Já existe um usuário com este CPF. </p> ";
+    } else {
+        $sql = "INSERT INTO usuarios (nome, cpf, senha)  VALUES ('$nome', '$cpf','$senha')";
+        $insert = mysqli_query($conn, $sql);
+        header('Location: ?pg=usuario_registrado');
+    }
 
-<a class="link" href="?pg=home"><i class="fa-solid fa-arrow-left mb-3"></i></a>
-    <h2 class="mb-4">Faça sua denúncia de alagamento</h2>
+       
+           
+  }
 
-        <form id="contactForm" action="?pg=registrardb" method="post" enctype="multipart/form-data"> 
+}
 
-                <label for="nome" class="p-0">Nome <i class="fa-solid fa-asterisk"></i>:</label>
-                <input type="text" class="form-control" name="nome" id="name" required="" data-validation-required-message="Por favor, insira seu nome." placeholder="Digite seu nome">
+?>
 
-                <div id="divNome">
 
-                </div>
+<div class="row">
+        
+        <div class="col-md-6 offset-md-3">
+              
+          <div class="mb-3">
+      
+          <div id="card-body-login" class="card-body cardbody-s p-lg-3">
+              <a href="?pg=home"><i class="fas fa-solid fa-arrow-left" id="back"></i></a> 
+  
+          <form method="POST" >
+  
+              <div class="text-center">
+                <img src="./assets/logo.png" id="logo" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" alt="ALAG Logo">
+                <p>Registrar</p>
+              </div>
+  
+              <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput" placeholder="Usuário" name="nome" required>
+              <label for="floatingInput">Nome <i class="fa-solid fa-asterisk"></i></label>
+              </div>
+  
+              <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput" placeholder="CPF" name="cpf" required>
+              <label for="floatingInput">CPF <i class="fa-solid fa-asterisk"></i></label>
+              </div>
+  
+              <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="senha" required>
+              <label for="floatingPassword">Senha <i class="fa-solid fa-asterisk"></i></label>
+              </div>
+  
+              <div class="buttonControl"><button type="submit" class="btn mt-3" id="sub-btn">Registrar</button></div> 
+            </form>
+            <p class="m-0 p-0">Já possui conta? <a class="btn m-0" href="?pg=entrar">Entrar</a></div> </p>
+          </div>
             
-
-            <label for="cep">CEP <i class="fa-solid fa-asterisk"></i> :</label>
-            <input type="text" class="form-control-sm" name="cep" id="cep" placeholder="Digite o CEP" data-input minlength="8" maxlength="8" required>
-            
-            <br>
-
-
-            <div id="error">
-
-            </div>    
-
-            <div id="resultado">
-
-
-            </div>
-
-            <label for="intensidade" class="pt-3">Intensidade <i class="fa-solid fa-asterisk"></i> :</label>
-            <select name="intensidade" class="form-select-sm" required>
-            <option value="">Selecione</option>
-            <option value="leve">Leve</option>
-            <option value="moderado">Moderado</option>
-            <option value="grave">Grave</option>
-            </select>
-            
-            <label for="classificacao">Classificação <i class="fa-solid fa-asterisk"></i> :</label>
-            <select name="classificacao" class="form-select-sm" required>
-            <option value="">Selecione</option>
-            <option value="localizado">Localizado</option>
-            <option value="intransitável">Intransitável</option>
-            </select>
-
-            <br>
-
-            
-            <label class="form-label">Escolha até 2 imagens(Opcional):</label>
-            <input class="form-control" id="imageInput" type="file" name="fotos[]" accept="image/*" multiple>
-            
-            <div id="imageDiv">
-
-            </div>
-
-            <br>
-
-            <label>Mensagem(Opcional):</label>
-            <textarea name="mensagem" id="mensagem" class="form-control" cols="7" rows="4" placeholder="Insira uma mensagem"></textarea>
-            
-            <br>
-
-            <button type="submit" class="btn" id="submitButton">Registrar ocorrência</button>
-
-        </form>
-
-
-
-</div>
-
+          </div>
+  
+        </div>
+      </div>
+    
+  
+      
+    </body>
+  </html>

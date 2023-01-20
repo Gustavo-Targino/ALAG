@@ -36,7 +36,7 @@ if(isset($_POST['nome'])){
 
 
     // if(empty($_POST['logradouro'])) {
-    //     echo("<p class='alert alert-danger mt-3' role='alert'> Houve um erro.<a href='?pg=registrar' class='btn-danger'>Tentar novamente</a> </p> "); 
+    //     echo("<p class='alert alert-danger mt-3' role='alert'> Houve um erro.<a href='?pg=denuncia' class='btn-danger'>Tentar novamente</a> </p> "); 
     //     exit;
     // } 
 
@@ -70,7 +70,7 @@ if(isset($_POST['nome'])){
             }
             
             // if($numeroDeFotos>2) {
-            //     echo("<p class='alert alert-danger mt-3' role='alert'> Envie apenas 2 imagens.<a href='?pg=registrar' class='btn-danger'>Tentar novamente</a> </p> "); 
+            //     echo("<p class='alert alert-danger mt-3' role='alert'> Envie apenas 2 imagens.<a href='?pg=denuncia' class='btn-danger'>Tentar novamente</a> </p> "); 
             //     exit;
             // }
            
@@ -136,12 +136,12 @@ function formularioEnviado() {
 
     echo "<p class='alert alert-success' role='alert'> Formulário enviado com sucesso! <br>
     <a href='?pg=home' class='btn mt-3'>Página inicial</a>
-    <a href='?pg=registrar' class='btn mt-3'>Registrar novamente</a>
+    <a href='?pg=denuncia' class='btn mt-3'>Registrar novamente</a>
     </p>";
 }
 
 function formularioNaoEnviado() {
-    echo("<p class='alert alert-danger mt-3' role='alert'> Houve um erro.<a href='?pg=registrar' class='btn-danger'>Tentar novamente</a> </p> "); 
+    echo("<p class='alert alert-danger mt-3' role='alert'> Houve um erro.<a href='?pg=denuncia' class='btn-danger'>Tentar novamente</a> </p> "); 
     exit;
 }
 
@@ -157,7 +157,7 @@ function salvarImagem() {
     foreach($nomes as $index => $name) {
         $extensao = strtolower(pathinfo($name, PATHINFO_EXTENSION));
             if($extensao != 'jpg' && $extensao != 'png' && $extensao!='jpeg') {
-                die("<p class='alert alert-danger mr-5'> Tipo de arquivo não aceito! Selecione imagens do tipo jpg,png ou jpeg.  <a href='?pg=registrar' class='btn-danger'>Tentar novamente</a> </p>");
+                die("<p class='alert alert-danger mr-5'> Tipo de arquivo não aceito! Selecione imagens do tipo jpg,png ou jpeg.  <a href='?pg=denuncia' class='btn-danger'>Tentar novamente</a> </p>");
             } else {
 
                 global $numeroDeFotos, $novosNomes, $paths;

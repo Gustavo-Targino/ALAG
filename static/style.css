@@ -175,7 +175,16 @@ hr.menu-hr {
     z-index: 10;
   }
 
+/* Tela de Login */
 
+#card-body-login {
+    border: 1px solid var(--primary--color);
+    border-radius: 0.5rem;
+}
+
+/* .card-link {
+    justify-content: end;
+} */
 
 /* Footer */
 
