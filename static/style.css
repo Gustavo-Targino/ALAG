@@ -2,6 +2,7 @@
     --primary--color: #1C6DD0;
     --hover--color: #1c6dd0b3;
     --black-color: #000;
+    --strong-blue: #00337C;
 }
 
 #fade {
@@ -160,6 +161,21 @@ label {
     border: 1px solid var(--primary--color);
     border-radius: 1rem;
 }
+
+/*Menu lateral*/
+
+hr.menu-hr {
+    border: 0.5rem solid var(--strong-blue);
+    width: 100%;
+    z-index: 10;
+  }
+
+  hr.item-hr {
+    border: 0.2rem solid var(--strong-blue);
+    z-index: 10;
+  }
+
+
 
 /* Footer */
 

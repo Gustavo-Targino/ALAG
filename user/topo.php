@@ -11,25 +11,27 @@
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MENU</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        
       </div>
+      <hr class="menu-hr">
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="?pg=home">Home</a>
           </li>
-
+        <hr class="item-hr">
           <li class="nav-item">
-            <a class="nav-link" href="?pg=registrar">Registrar Alagamento</a>
+            <a class="nav-link" href="?pg=registrar">Denunciar Alagamento</a>
           </li>
-
+        <hr class="item-hr">
           <li class="nav-item">
             <a class="nav-link" href="#">Previsão do tempo</a>
           </li>
-
+        <hr class="item-hr">
           <li class="nav-item">
             <a class="nav-link" href="?pg=prevencao">Cuidados em alagamentos</a>
           </li>
-          
+        <hr class="item-hr">
       </div>
     </div>
   </div>
