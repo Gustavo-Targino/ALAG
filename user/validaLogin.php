@@ -2,11 +2,15 @@
 
 if(!isset($_SESSION)) {
     session_start();
+    
 }
 
 if(!isset($_SESSION['cpf'])) {
    errorMessage();
 }
+
+$nomeDaSessao = $_SESSION['nome'];
+$cpfDaSessao = $_SESSION['cpf'];
 
 function errorMessage() {
     die("<div class='card mb-3' style='max-width: 70rem;'>
@@ -19,7 +23,8 @@ function errorMessage() {
       <div class='col-md-8 p-3'>
         
         <h3 class='card-title my-5'>Usuário não logado</h3>
-        <p class='alert alert-danger card-text mt-3' role='alert'> Ops! Você precisa entrar na sua conta para acessar esse conteúdo.  <br><br> <a href='?pg=entrar' class='btn-danger'>Entre para continuar</a></p>
+        <p class='alert alert-danger card-text mt-3' role='alert'> Ops! Você precisa entrar na sua conta para acessar esse conteúdo.</p>
+        <a href='?pg=entrar' class='btn-danger'>Entre para continuar</a>
       </div>
   
       </div>

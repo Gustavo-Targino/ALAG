@@ -1,17 +1,19 @@
 <?php
+
+
+include('validaLogin.php');
+
+
 include('./inc/config.inc.php');
 
 
 $numeroDeFotos = 0;
 
-if(isset($_POST['nome'])){
+if(isset($_POST['cep'])){
    
     date_default_timezone_set('America/Sao_Paulo');
 
     $data_e_hora = date('d/m/Y H:i:s', time());
-
-
-    $nome = $_POST['nome'];
 
     $logradouro = $_POST['logradouro'];
     $bairro = $_POST['bairro'];
@@ -35,21 +37,16 @@ if(isset($_POST['nome'])){
     $paths = [];
 
 
-    // if(empty($_POST['logradouro'])) {
-    //     echo("<p class='alert alert-danger mt-3' role='alert'> Houve um erro.<a href='?pg=denuncia' class='btn-danger'>Tentar novamente</a> </p> "); 
-    //     exit;
-    // } 
-
     //Imagem sim, mensagem sim
     if($naoExisteImagem==false && $naoExisteMensagem==false) {
-        //Script que salva os campos, inclusive imagem e mensagem
+        
 
         $sucesso = salvarImagem();
 
         if($sucesso) {
             
             if($numeroDeFotos==1) {
-                $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','$novosNomes[0]','$paths[0]', 'null' , 'null',  '$local', '$intensidade', '$classificacao', '$mensagem')";
+                $sql = "INSERT INTO ocorrencias (nome, cpf, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nomeDaSessao', '$cpfDaSessao', '$data_e_hora','$novosNomes[0]','$paths[0]', 'null' , 'null',  '$local', '$intensidade', '$classificacao', '$mensagem')";
                 //===== FEITO FEITO FEITO FEITO FEITO
                 $insert = mysqli_query($conn, $sql);
                 formularioEnviado();
@@ -62,17 +59,13 @@ if(isset($_POST['nome'])){
                $nomeFotoDois = $novosNomes[1];
                $pathFotoDois = $paths[1];
 
-               $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','$nomeFotoUm','$pathFotoUm', '$nomeFotoDois' , '$pathFotoDois',  '$local', '$intensidade', '$classificacao', '$mensagem')";
+               $sql = "INSERT INTO ocorrencias (nome, cpf, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nomeDaSessao', '$cpfDaSessao', '$data_e_hora','$nomeFotoUm','$pathFotoUm', '$nomeFotoDois' , '$pathFotoDois',  '$local', '$intensidade', '$classificacao', '$mensagem')";
                
                $insert = mysqli_query($conn, $sql);
                formularioEnviado();
 
             }
             
-            // if($numeroDeFotos>2) {
-            //     echo("<p class='alert alert-danger mt-3' role='alert'> Envie apenas 2 imagens.<a href='?pg=denuncia' class='btn-danger'>Tentar novamente</a> </p> "); 
-            //     exit;
-            // }
            
         } else {
             formularioNaoEnviado();
@@ -87,8 +80,8 @@ if(isset($_POST['nome'])){
 
         if($sucesso) {
             if($numeroDeFotos==1) {
-                $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','$novosNomes[0]','$paths[0]', 'null' , 'null',  '$local', '$intensidade', '$classificacao', 'null')";
-                //===== FEITO FEITO FEITO FEITO FEITO
+                $sql = "INSERT INTO ocorrencias (nome, cpf, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nomeDaSessao', '$cpfDaSessao' , '$data_e_hora','$novosNomes[0]','$paths[0]', 'null' , 'null',  '$local', '$intensidade', '$classificacao', 'null')";
+                
                 $insert = mysqli_query($conn, $sql);
                 formularioEnviado();
             }
@@ -100,7 +93,7 @@ if(isset($_POST['nome'])){
                $nomeFotoDois = $novosNomes[1];
                $pathFotoDois = $paths[1];
 
-               $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','$nomeFotoUm','$pathFotoUm', '$nomeFotoDois' , '$pathFotoDois',  '$local', '$intensidade', '$classificacao', 'null')";
+               $sql = "INSERT INTO ocorrencias (nome, cpf, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nomeDaSessao', '$cpfDaSessao' ,'$data_e_hora','$nomeFotoUm','$pathFotoUm', '$nomeFotoDois' , '$pathFotoDois',  '$local', '$intensidade', '$classificacao', 'null')";
                
                $insert = mysqli_query($conn, $sql);
                formularioEnviado();
@@ -116,7 +109,7 @@ if(isset($_POST['nome'])){
     
     //Imagem não, mensagem sim
     if($naoExisteImagem && $naoExisteMensagem==false) {
-        $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','null','null', 'null' , 'null',  '$local', '$intensidade', '$classificacao', '$mensagem')";
+        $sql = "INSERT INTO ocorrencias (nome, cpf, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nomeDaSessao', '$cpfDaSessao' , '$data_e_hora','null','null', 'null' , 'null',  '$local', '$intensidade', '$classificacao', '$mensagem')";
                
         $insert = mysqli_query($conn, $sql);
         formularioEnviado();
@@ -124,7 +117,7 @@ if(isset($_POST['nome'])){
 
     //Imagem não, mensagem não
     if($naoExisteImagem && $naoExisteMensagem) {
-        $sql = "INSERT INTO ocorrencias (nome, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nome', '$data_e_hora','null','null', 'null' , 'null',  '$local', '$intensidade', '$classificacao', 'null')";
+        $sql = "INSERT INTO ocorrencias (nome, cpf, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nomeDaSessao', '$cpfDaSessao' ,'$data_e_hora','null','null', 'null' , 'null',  '$local', '$intensidade', '$classificacao', 'null')";
                
         $insert = mysqli_query($conn, $sql);
         formularioEnviado();
@@ -134,15 +127,44 @@ if(isset($_POST['nome'])){
 
 function formularioEnviado() {
 
-    echo "<p class='alert alert-success' role='alert'> Formulário enviado com sucesso! <br>
-    <a href='?pg=home' class='btn mt-3'>Página inicial</a>
-    <a href='?pg=denuncia' class='btn mt-3'>Registrar novamente</a>
-    </p>";
+    echo "<div class='card mb-3' style='max-width: 70rem;'>
+    <div class='row g-0'>
+  
+      <div class='col-md-4'>
+        <img src='./assets/pessoa_mensagem.png' class='img-fluid rounded-start' alt='Sucesso'>
+      </div>
+  
+      <div class='col-md-8 p-3'>
+        
+        <h3 class='card-title my-5'>Formulário enviado com sucesso!</h3>
+        <p class='alert alert-success card-text mt-3' role='alert'> Sua denúncia foi salva. </p>
+        <a href='?pg=home' class='btn'>Página Inicial</a>
+        <a href='?pg=denuncia' class='btn'>Fazer outra denúncia</a>
+      </div>
+  
+      </div>
+  </div>
+
+";
 }
 
 function formularioNaoEnviado() {
-    echo("<p class='alert alert-danger mt-3' role='alert'> Houve um erro.<a href='?pg=denuncia' class='btn-danger'>Tentar novamente</a> </p> "); 
-    exit;
+    die("<div class='card mb-3' style='max-width: 70rem;'>
+    <div class='row g-0'>
+  
+      <div class='col-md-4'>
+        <img src='./assets/pessoa_mensagem.png' class='img-fluid rounded-start' alt='Erro'>
+      </div>
+  
+      <div class='col-md-8 p-3'>
+        
+        <h3 class='card-title my-5'>Formulário não enviado.</h3>
+        <p class='alert alert-danger card-text mt-3' role='alert'> Houve um erro no cadastro da sua denúncia. </p> <br><br>
+        <a href='?pg=denuncia' class='btn-danger'>Tente novamente</a>
+      </div>
+  
+      </div>
+  </div>");
 }
 
 function salvarImagem() {

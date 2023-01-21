@@ -2,7 +2,6 @@
 
 include('validaLogin.php');
 
-
 ?>
 
 
@@ -22,7 +21,7 @@ include('validaLogin.php');
         <form id="contactForm" action="?pg=denunciabd" method="post" enctype="multipart/form-data"> 
 
                 <label for="nome" class="p-0">Nome <i class="fa-solid fa-asterisk"></i>:</label>
-                <input type="text" class="form-control" name="nome" id="name" required="" data-validation-required-message="Por favor, insira seu nome." placeholder="Digite seu nome">
+                <input type="text" class="form-control" name="nome" id="name" required="" data-validation-required-message="Por favor, insira seu nome." placeholder="Digite seu nome" value="<?= $nomeDaSessao ?>" disabled>
 
                 <div id="divNome">
 

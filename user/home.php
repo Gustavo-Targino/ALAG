@@ -44,7 +44,7 @@
   <div class="card-body">
     <h5 class="card-title"><strong>Cuidados</strong></h5>
     <p class="card-text">O que fazer em meio à alagamentos.</p>
-    <a href="?pg=entrar" class="card-link btn">Saiba mais</a>
+    <a href="?pg=prevencao" class="card-link btn">Saiba mais</a>
   </div>
 </div>  
 

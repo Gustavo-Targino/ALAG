@@ -37,6 +37,11 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
 ?>
 
 
+
+<div id="error">
+
+            </div>   
+
 <div class="row">
         
         <div class="col-md-6 offset-md-3">
@@ -46,7 +51,7 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
           <div id="card-body-login" class="card-body cardbody-s p-lg-3">
               <a href="?pg=home"><i class="fas fa-solid fa-arrow-left" id="back"></i></a> 
   
-          <form method="POST" >
+          <form id="registerForm" method="POST" >
   
               <div class="text-center">
                 <img src="./assets/logo.png" id="logo" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" alt="ALAG Logo">
@@ -54,17 +59,17 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
               </div>
   
               <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" placeholder="Usuário" name="nome" required>
+              <input type="text" class="form-control" id="nome" placeholder="Usuário" name="nome" required>
               <label for="floatingInput">Nome <i class="fa-solid fa-asterisk"></i></label>
               </div>
   
               <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" placeholder="CPF" name="cpf" required>
+              <input type="text" class="form-control" id="cpf" placeholder="CPF" name="cpf" onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="11" maxlength="11" required>
               <label for="floatingInput">CPF <i class="fa-solid fa-asterisk"></i></label>
               </div>
   
               <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="senha" required>
+              <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha" required>
               <label for="floatingPassword">Senha <i class="fa-solid fa-asterisk"></i></label>
               </div>
   
@@ -78,7 +83,31 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
         </div>
       </div>
     
+  <script defer>
+
+  const divMsg = document.querySelector('#error')
+  const cpfInput = document.querySelector('#cpf')
+
+
+  const registerForm = document.querySelector('#registerForm')
+
+  cpfInput.addEventListener('paste', ()=> {
+    cpfInput.value = ''
+    divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;' ><small>Não copie e cole.</small></p>"
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  })
   
+
+registerForm.addEventListener('submit', (e)=> {
+  if(cpfInput.value.length!==11) {
+    registerForm.reset()
+    divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;' ><small>O CPF deve ter 11 números.</small></p>"
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    e.preventDefault()
+   }
+})
+
+  </script>
       
     </body>
   </html>

@@ -8,8 +8,10 @@
       <div class='col-md-8 p-3'>
         
         <h3 class='card-title my-5'>Usuário registrado com sucesso!</h3>
-        <p class='alert alert-success card-text mt-3' role='alert'> Você já pode entrar na sua conta. <a href='?pg=entrar' class='btn'>Entrar</a></p>
+        <p class='alert alert-success card-text mt-3' role='alert'> Você já pode entrar na sua conta. </p>
+        <a href='?pg=entrar' class='btn'>Entrar</a>
         <a href='?pg=home' class='btn'>Página inicial</a>
+
       </div>
   
       </div>

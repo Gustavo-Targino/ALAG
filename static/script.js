@@ -161,6 +161,7 @@ function cepInputErrorMessage() {
     return
 }
 
+
 function scrollTop() {   
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
