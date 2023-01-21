@@ -19,9 +19,8 @@ let crtlV = false
 const messageResult = document.querySelector("#resultado")
 const divErro = document.querySelector('#error')
 
-// const formInputs = document.querySelector('#[data-input]')
 
-//Apenas permitir letras e acentos no input de nome
+
 $("#name").keypress(function(press) {
     let keyCode = (press.keyCode ? press.keyCode : press.which);
     if (keyCode >= 33 && keyCode <= 64 || keyCode>=91 && keyCode <=96 || keyCode>=123) {
@@ -66,7 +65,7 @@ cepInput.addEventListener('keyup', (e)=> {
     messageResult.innerHTML = ''
     messageResult.classList.remove('result')
 
-    //SEARCH RETORNA -1 QUANDO NAO ENCONTRA
+    
     let caractere = inputValue.search(/\W|_|-/)
     let letra = inputValue.search(/[A-z]/)
     let numero = inputValue.search(/[0-9]/)

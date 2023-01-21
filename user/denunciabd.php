@@ -47,7 +47,7 @@ if(isset($_POST['cep'])){
             
             if($numeroDeFotos==1) {
                 $sql = "INSERT INTO ocorrencias (nome, cpf, data_envio, nome_img_1, path_1, nome_img_2, path_2, endereco, intensidade, classificacao, mensagem) VALUES ('$nomeDaSessao', '$cpfDaSessao', '$data_e_hora','$novosNomes[0]','$paths[0]', 'null' , 'null',  '$local', '$intensidade', '$classificacao', '$mensagem')";
-                //===== FEITO FEITO FEITO FEITO FEITO
+               
                 $insert = mysqli_query($conn, $sql);
                 formularioEnviado();
             }

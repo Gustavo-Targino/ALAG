@@ -68,7 +68,7 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
             </div>
 
             <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Usuário" name="nome" required>
+            <input type="text" class="form-control" id="nomeUsuario" placeholder="Usuário" name="nome" required>
             <label for="floatingInput">Nome <i class="fa-solid fa-asterisk"></i></label>
             </div>
 
@@ -97,12 +97,13 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
 
   const divMsg = document.querySelector('#error')
   const cpfInput = document.querySelector('#cpf')
-
+  const name = document.querySelector("#nomeUsuario")
 
   const loginForm = document.querySelector('#loginForm')
 
   cpfInput.addEventListener('paste', ()=> {
     cpfInput.value = ''
+    divMsg.innerHTML = ''
     divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;' ><small>Não copie e cole.</small></p>"
     window.scrollTo({ top: 0, behavior: 'smooth' })
   })
@@ -115,6 +116,7 @@ loginForm.addEventListener('submit', (e)=> {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     e.preventDefault()
    }
+   
 })
 
   </script>

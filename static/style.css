@@ -43,17 +43,6 @@ body {
     padding: 4rem;
 }
 
-.principal-text {
-    padding-bottom: 4rem;
-}
-
-#p-home {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 4rem;
-}
-
 .link {
     text-decoration: none;
     color: var(--black-color);
@@ -182,14 +171,11 @@ hr.menu-hr {
     border-radius: 0.5rem;
 }
 
-/* .card-link {
-    justify-content: end;
-} */
 
 /* Footer */
 
 footer {
-    height: 15rem;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;

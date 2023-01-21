@@ -21,7 +21,7 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
   
     if(mysqli_num_rows($retornoVerificacao)!==0) {
     
-        echo "<p class='alert alert-danger mt-3' role='alert'> Falha ao registrar. Já existe um usuário com este CPF. </p> ";
+        echo "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;'> Falha ao registrar. Já existe um usuário com este CPF. </p> ";
     } else {
         $sql = "INSERT INTO usuarios (nome, cpf, senha)  VALUES ('$nome', '$cpf','$senha')";
         $insert = mysqli_query($conn, $sql);
@@ -40,7 +40,7 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
 
 <div id="error">
 
-            </div>   
+</div>   
 
 <div class="row">
         
@@ -59,7 +59,7 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
               </div>
   
               <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="nome" placeholder="Usuário" name="nome" required>
+              <input type="text" class="form-control" id="nomeUsuario" placeholder="Usuário" name="nome" required>
               <label for="floatingInput">Nome <i class="fa-solid fa-asterisk"></i></label>
               </div>
   
@@ -87,25 +87,68 @@ if(isset($_POST['nome']) || isset($_POST['cpf']) || isset($_POST['senha'])) {
 
   const divMsg = document.querySelector('#error')
   const cpfInput = document.querySelector('#cpf')
-
+  const nameInput = document.querySelector('#nomeUsuario')
 
   const registerForm = document.querySelector('#registerForm')
 
-  cpfInput.addEventListener('paste', ()=> {
+  cpfInput.addEventListener('paste', (e)=> {
+    e.preventDefault()
     cpfInput.value = ''
+    divMsg.innerHTML = ''
     divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;' ><small>Não copie e cole.</small></p>"
     window.scrollTo({ top: 0, behavior: 'smooth' })
   })
   
+nameInput.addEventListener('paste', (e)=> {
+  e.preventDefault()
+  nameInput.value = ''
+  divMsg.innerHTML = ''
+    divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;' ><small>Não copie e cole.</small></p>"
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+})
 
 registerForm.addEventListener('submit', (e)=> {
+  
+if(validateNameInput()==false) {
+        e.preventDefault()
+   } 
+
   if(cpfInput.value.length!==11) {
     registerForm.reset()
-    divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;' ><small>O CPF deve ter 11 números.</small></p>"
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert' style='text-align: center;' ><small>O CPF deve ter 11 números.</small></p>"
     e.preventDefault()
    }
+
+   
+
 })
+
+$("#nomeUsuario").keypress(function(press) {
+    let keyCode = (press.keyCode ? press.keyCode : press.which);
+    if (keyCode >= 33 && keyCode <= 64 || keyCode>=91 && keyCode <=96 || keyCode>=123) {
+      press.preventDefault();
+    }
+  });
+
+  function validateNameInput() {
+  
+    //Nome de usuário 
+    if(nameInput.value.trim()==="") {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        divMsg.innerHTML = ''
+        divMsg.innerHTML = "<p class='alert alert-danger mt-3' role='alert'><small>O nome não pode ser vazio.</small></p>"
+        return false
+    
+    } else {
+        divMsg.innerHTML = ''
+        return true
+    }
+
+}
+
+
+
 
   </script>
       

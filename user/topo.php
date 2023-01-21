@@ -16,22 +16,37 @@
       <hr class="menu-hr">
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="?pg=home">Home</a>
+            <a class="nav-link"  href="?pg=home">Home</a>
           </li>
+
         <hr class="item-hr">
+
+          <li class="nav-item">
+            <a class="nav-link" href="?pg=entrar">Login</a>
+          </li>
+
+        <hr class="item-hr">
+
+          <li class="nav-item">
+            <a class="nav-link" href="?pg=perfil">Perfil</a>
+          </li>
+
+        <hr class="item-hr">
+
           <li class="nav-item">
             <a class="nav-link" href="?pg=denuncia">Denunciar Alagamento</a>
           </li>
+
         <hr class="item-hr">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Previsão do tempo</a>
-          </li>
-        <hr class="item-hr">
+
           <li class="nav-item">
             <a class="nav-link" href="?pg=prevencao">Cuidados em alagamentos</a>
           </li>
+
         <hr class="item-hr">
+
       </div>
     </div>
   </div>

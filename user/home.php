@@ -52,23 +52,8 @@
 </div>
 
 
-
-
-
-<!-- 
-        <p class="card-text"><a href="?pg=entrar" class="btn">Login e registrar</a></p>
-        <p class="card-text"><a href="?pg=perfil" class="btn">Meu perfil</a></p>
-        <p class="card-text"><a href="?pg=denuncia" class="btn">Denunciar alagemento</a></p>
-        <p class="card-text"><a href="?pg=prevencao" class="btn">Cuidados em alagamentos</a></p> -->
-
-        <p class="card-text mt-3"><small class="text-muted">Selecione algo acima</small></p>
+        <p class="card-text mt-3 text-center"><small class="text-muted">Selecione uma das opções acima</small></p>
       </div>
     </div>
   </div>
 </div>
-
-
-    
-
-
-
